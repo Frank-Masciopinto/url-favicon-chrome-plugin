@@ -5,6 +5,10 @@ const LS = {
     removeItems: keys => chrome.storage.local.remove(keys),
   };
 
+chrome.action.onClicked.addListener(() =>{
+    chrome.tabs.create({url:chrome.runtime.getURL("html/settings.html")})
+})
+
 chrome.runtime.onInstalled.addListener(async (details) => {
 if(details.reason == "install"){ 
     let sign_up = chrome.runtime.getURL("html/settings.html")
