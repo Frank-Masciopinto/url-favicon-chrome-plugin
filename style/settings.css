@@ -122,9 +122,7 @@ button.form-btn.dx {
 .error {
 	color: red;
 }
-.WL-OFF {
-	background-color: red !important;
-}
+
 
 input.url, input.token {
 	border: none;

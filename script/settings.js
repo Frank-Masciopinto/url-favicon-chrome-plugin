@@ -66,23 +66,30 @@ async function add_additional_toggle_event_listener(toggle, memory_name, positio
 
 
 //Event handlers for whitelist activation buttons
-FORM_btn_WL_ON.addEventListener("click", () => {
+FORM_btn_WL_ON.addEventListener("click", async() => {
 	if (FORM_btn_WL_ON.className.includes("LS_Active")) {
-		console.log("Deactivating...");
-		await LS.setItem(CONST_whitelist_on, false)
-		FORM_btn_WL_ON.className.remove("LS_Active")
-		FORM_btn_WL_OFF.className.add("LS_Active")
+		//open notification popup
+		chrome.runtime.sendMessage({message: "create_notification", title: CONST_extension_notification_title, description: "Whitelist Already ON"})
 	}
 	else {
 		console.log("Activating...");
 		await LS.setItem(CONST_whitelist_on, true)
-		FORM_btn_WL_ON.className.add("LS_Active")
-		FORM_btn_WL_OFF.className.remove("LS_Active")
+		FORM_btn_WL_ON.classList.add("LS_Active")
+		FORM_btn_WL_OFF.classList.remove("LS_Active")
+		chrome.runtime.sendMessage({message: "create_notification", title: CONST_extension_notification_title, description: "Whitelist Activated"})
 	}
 })
-FORM_btn_WL_OFF.addEventListener("click", () => {
+FORM_btn_WL_OFF.addEventListener("click", async() => {
 	console.log(document.getElementsByClassName("WL-OFF")[0]);
 	if (FORM_btn_WL_OFF.className.includes("LS_Active")) {
-		console.log("Active");
+		console.log("Already OFF...");
+		chrome.runtime.sendMessage({message: "create_notification", title: CONST_extension_notification_title, description: "Whitelist Already OFF"})
+	}
+	else {
+		console.log("Deactivating...");
+		await LS.setItem(CONST_whitelist_on, true)
+		FORM_btn_WL_OFF.classList.add("LS_Active")
+		FORM_btn_WL_ON.classList.remove("LS_Active")
+		chrome.runtime.sendMessage({message: "create_notification", title: CONST_extension_notification_title, description: "Whitelist Deactivated"})
 	}
 })
