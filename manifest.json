@@ -1,0 +1,23 @@
+{
+  "name": "Whitelist",
+  "version": "1.00",
+  "description": "Page Title & Url Chrome Plugin",
+  "manifest_version": 3,
+  "background":
+    {
+      "service_worker": "background.js"
+    },
+    "permissions": [
+      "activeTab", "notifications", "storage", "scripting"],
+   
+   "host_permissions": [
+     "*://*/*"
+   ],
+
+  "icons" : { "42": "Images/42.png",
+              "128": "Images/128.png" },
+
+  "action": {
+    "default_title": "Whitelist - Url Chrome Plugin"
+  }
+}
