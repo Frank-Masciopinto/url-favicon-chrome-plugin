@@ -87,9 +87,10 @@ FORM_btn_WL_OFF.addEventListener("click", async() => {
 	}
 	else {
 		console.log("Deactivating...");
-		await LS.setItem(CONST_whitelist_on, true)
+		await LS.setItem(CONST_whitelist_on, false)
 		FORM_btn_WL_OFF.classList.add("LS_Active")
 		FORM_btn_WL_ON.classList.remove("LS_Active")
 		chrome.runtime.sendMessage({message: "create_notification", title: CONST_extension_notification_title, description: "Whitelist Deactivated"})
+		console.log(CONST_whitelist_on);
 	}
 })
