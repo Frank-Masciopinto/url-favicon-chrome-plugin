@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Main Page</title>
+        <!-- CSS only -->
+        <link rel="stylesheet" href="../style/settings.css">
+    </head>
+    <body> 
+        <div class="container">
+            <form class="signUp">
+                <h3>Settings</h3>
+                <p>Create Your Url Whitelist</p>        
+        <input type="text" class="url" placeholder="Url: App.domain.com" required />
+        <input class="w100 token" type="text" placeholder="Token: privateKey" required autocomplete='off' />
+        <h3 class="whitelistTitle">Plugin URL Whitelist</h3>
+        <input type="text" class="whitelist" placeholder="google.com, github.com, shortcut.com, asana.com, looker.com, salesforce.com" required autocomplete='off' />
+        <button class="form-btn sx WL-ON" type="button">WhiteList ON</button>
+        <button class="form-btn dx WL-OFF" type="button">WhiteList OFF</button>
+        <div id="error" class="error"></div>
+    </form>
+    </div>
+    </body>
+    <script src="../script/constants.js"></script>
+    <script src="../script/settings.js"></script>
+</html>
